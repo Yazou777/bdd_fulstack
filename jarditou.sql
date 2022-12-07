@@ -61,7 +61,7 @@ CREATE TABLE produit(
 CREATE TABLE panier(
         comp_qte_pro           INT NOT NULL,
         comp_prix_vente_par      FLOAT NOT NULL,
-        compa_prix_vente_pro   FLOAT NOT NULL,
+        comp_prix_vente_pro   FLOAT NOT NULL,
 		  pro_code					CHAR(6) NOT NULL,
 		  com_id						INT NOT NULL,
 		  FOREIGN KEY (pro_code) REFERENCES produit (pro_code),
@@ -77,3 +77,46 @@ ON client (cli_nom)
 CREATE  UNIQUE  INDEX date_com 
 ON commande ( com_date_commande ) 
 ;
+
+INSERT INTO produit (pro_code ,pro_libelle ,fou_id)
+VALUES
+("1","prd1",1)
+;
+
+
+INSERT INTO panier (comp_qte_pro ,comp_prix_vente_par ,comp_prix_vente_pro ,pro_code ,com_id)
+VALUES
+(5,5,5,"5",24),
+(6,6,6,"6",24),
+(7,7,7,"7",25),
+(8,8,8,"8",25),
+(9,9,9,"9",26),
+(10,10,10,"10",26),
+(11,11,11,"11",27),
+(12,12,12,"12",27),
+(13,13,13,"13",28),
+(14,14,14,"14",28),
+(15,15,15,"15",29),
+(16,16,16,"16",29),
+(17,17,17,"17",30),
+(18,18,18,"18",30),
+(19,19,19,"19",31),
+(20,20,20,"20",31),
+(21,21,21,"21",31)
+;
+
+
+CREATE USER 'gestionnaire'@'%' IDENTIFIED BY '123';
+CREATE USER 'approvisionneur'@'%' IDENTIFIED BY '123';
+CREATE USER 'administrateur'@'%' IDENTIFIED BY '123';
+
+
+GRANT ALL PRIVILEGES 
+ON jarditou.produit
+TO 'approvisionneur'@'%';
+FLUSH PRIVILEGES;
+
+GRANT ALL PRIVILEGES 
+ON jarditou.*
+TO 'administrateur'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
