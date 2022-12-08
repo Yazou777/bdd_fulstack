@@ -78,9 +78,9 @@ CREATE  UNIQUE  INDEX date_com
 ON commande ( com_date_commande ) 
 ;
 
-INSERT INTO produit (pro_code ,pro_libelle ,fou_id)
+INSERT INTO produit (pro_code ,pro_libelle ,fou_id ,rub_id)
 VALUES
-("1","prd1",1)
+("33","produit33",1 ,2)
 ;
 
 
